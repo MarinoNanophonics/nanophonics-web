@@ -811,8 +811,8 @@ const CYAN = css('--cyan') || '#3fe8ff';
        so the form is never a dead end. Set `action` on the <form> to switch
        to a real POST (Formspree, Basin, Netlify Forms, …). */
     if (!endpoint) {
-      const subject = encodeURIComponent(data.subject || `Project enquiry — ${data.name}`);
-      const body = encodeURIComponent(`${data.message}\n\n— ${data.name}\n${data.email}`);
+      const subject = encodeURIComponent(data.subject || `Project enquiry from ${data.name}`);
+      const body = encodeURIComponent(`${data.message}\n\n${data.name}\n${data.email}`);
       window.location.href = `mailto:info@nanophonics.com?subject=${subject}&body=${body}`;
       status.textContent = 'Opening your mail client…';
       return;
