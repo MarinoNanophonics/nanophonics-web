@@ -452,9 +452,13 @@
 
       <form class="form" id="contactForm" data-r novalidate
             method="POST"
-            action="">
-        <!-- Configure a form endpoint (Formspree / Basin / Netlify) in the action above.
-             Until then the form falls back to opening the visitor's mail client. -->
+            action=""
+            name="contact" data-netlify="true" netlify-honeypot="_gotcha">
+        <!-- On Netlify hosting the attributes above register the form at deploy
+             time and submissions land in the Netlify dashboard. Anywhere else,
+             set a Formspree/Basin endpoint in `action`; with neither, the form
+             falls back to opening the visitor's mail client. -->
+        <input type="hidden" name="form-name" value="contact" />
         <div class="field">
           <label for="f-name">Name</label>
           <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />

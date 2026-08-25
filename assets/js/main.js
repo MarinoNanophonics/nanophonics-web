@@ -805,11 +805,18 @@ const CYAN = css('--cyan') || '#3fe8ff';
     }
 
     const data = Object.fromEntries(new FormData(form).entries());
-    const endpoint = form.getAttribute('action');
+    let endpoint = form.getAttribute('action');
 
-    /* No endpoint configured yet → hand off to the visitor's mail client
-       so the form is never a dead end. Set `action` on the <form> to switch
-       to a real POST (Formspree, Basin, Netlify Forms, …). */
+    /* On Netlify hosting the platform itself accepts the POST at "/"; the
+       data-netlify attributes register the form at deploy time. GitHub Pages
+       has no server side, so the same markup skips this branch there. */
+    const onNetlify = form.hasAttribute('data-netlify') &&
+                      !/(^|\.)github\.io$/.test(location.hostname) &&
+                      location.protocol !== 'file:';
+    if (!endpoint && onNetlify) endpoint = '/';
+
+    /* With no endpoint at all, hand off to the visitor's mail client so the
+       form is never a dead end. */
     if (!endpoint) {
       const subject = encodeURIComponent(data.subject || `Project enquiry from ${data.name}`);
       const body = encodeURIComponent(`${data.message}\n\n${data.name}\n${data.email}`);
@@ -825,11 +832,18 @@ const CYAN = css('--cyan') || '#3fe8ff';
     btn.disabled = true;
 
     try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form),
-      });
+      // Netlify expects urlencoded; Formspree-style endpoints take FormData
+      const res = await fetch(endpoint, endpoint === '/'
+        ? {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString(),
+          }
+        : {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(form),
+          });
       if (!res.ok) throw new Error(res.status);
       form.reset();
       status.textContent = 'Message sent. We will get back to you shortly.';
