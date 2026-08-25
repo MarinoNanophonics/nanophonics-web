@@ -280,12 +280,10 @@ main,.nav,.foot{ position:relative; z-index:2; }
 }
 
 .brand{ display:inline-flex; align-items:center; gap:10px; flex:none; }
-.brand__mark{ width:28px; height:20px; color:var(--acc); overflow:visible; }
-.brand__mark path{
-  stroke-dasharray:64; stroke-dashoffset:0;
-  transition:stroke-dashoffset .7s var(--ease);
-}
-.brand:hover .brand__mark path{ stroke-dashoffset:128; }
+.brand__mark{ width:28px; height:21px; color:var(--acc); overflow:visible; }
+/* the axis line brightens on hover; the stems stay put */
+.brand__axis{ transition:opacity .35s; }
+.brand:hover .brand__axis{ opacity:.9; }
 .brand__word{
   font-family:var(--f-dsp); font-weight:600; font-size:17.5px;
   letter-spacing:-.02em;
