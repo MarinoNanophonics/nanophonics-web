@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="128" height="96" fill="none" stroke="#d4ff3f" role="img" aria-label="Nanophonics mark">
+  <title>Nanophonics: discrete-time impulse response</title>
+  <path d="M3 13 H29" stroke-width="0.8" opacity=".38"/>
+  <path d="M5.5 13 V4 M10 13 V19.2 M14.5 13 V8.8 M19 13 V15.7 M23.5 13 V11.3 M28 13 V14" stroke-width="1.7"/>
+  <g fill="#d4ff3f" stroke="none">
+    <circle cx="5.5" cy="4" r="1.5"/><circle cx="10" cy="19.2" r="1.5"/><circle cx="14.5" cy="8.8" r="1.5"/>
+    <circle cx="19" cy="15.7" r="1.5"/><circle cx="23.5" cy="11.3" r="1.5"/><circle cx="28" cy="14" r="1.5"/>
+  </g>
+</svg>
