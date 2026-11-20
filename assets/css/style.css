@@ -762,7 +762,7 @@ main,.nav,.foot{ position:relative; z-index:2; }
 .foot__up:hover{ color:var(--acc); border-color:var(--acc); transform:translateY(-3px); }
 
 .legal{
-  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
   gap:24px 20px;
   padding-block:32px;
   border-bottom:1px solid var(--line);
@@ -775,11 +775,6 @@ main,.nav,.foot{ position:relative; z-index:2; }
 .foot__bar{
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
   padding-top:22px; color:var(--ink-4);
-}
-.foot__company{
-  display:flex; flex-wrap:wrap; gap:4px 22px;
-  margin-top:14px; color:var(--ink-4);
-  font:400 12.5px/1.7 var(--f-mon);
 }
 
 /* ── 12. REVEAL / MOTION ───────────────────────────────────── */
@@ -795,6 +790,7 @@ main,.nav,.foot{ position:relative; z-index:2; }
 
 /* ── 13. RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 1080px){
+  .legal{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   /* stack the row: name + toggle on line 1, then kicker, then meta.
      Explicit areas, because auto-placement scrambles 4 children across 2 columns. */
   .work__btn{
