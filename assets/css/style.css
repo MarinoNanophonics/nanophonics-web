@@ -776,6 +776,11 @@ main,.nav,.foot{ position:relative; z-index:2; }
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
   padding-top:22px; color:var(--ink-4);
 }
+.foot__company{
+  display:flex; flex-wrap:wrap; gap:4px 22px;
+  margin-top:14px; color:var(--ink-4);
+  font:400 12.5px/1.7 var(--f-mon);
+}
 
 /* ── 12. REVEAL / MOTION ───────────────────────────────────── */
 /* The hidden-until-revealed state is gated on `.js` (set inline in <head>),
